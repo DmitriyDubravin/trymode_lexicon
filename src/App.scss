@@ -1,0 +1,199 @@
+@import './css/global.scss';
+// @import './css/vars';
+// @import './css/typography';
+// @import './css/global';
+// @import './css/forms';
+
+// @import './css/components/main-logo';
+// @import './css/components/menu-switch';
+// @import './css/components/main-nav';
+// @import './css/components/user-nav';
+// @import './css/components/datepicker';
+// @import './css/components/date-string';
+// @import './css/components/loader';
+// @import './css/components/event';
+
+
+
+// * {
+//     box-sizing: border-box;
+//     &:before,
+//     &:after {
+//         box-sizing: border-box;
+//     }
+// }
+
+// .App {
+//     position: relative;
+//     min-height: 100vh;
+// }
+
+// .main-holder {
+//     display: flex;
+//     flex-wrap: wrap;
+//     border: solid $white;
+//     border-width: 1px 0 0 1px;
+// }
+
+// .header {
+//     position: absolute;
+//     top: 10px;
+//     left: 10px;
+//     right: 10px;
+// }
+
+
+// .add-popup-opener {
+//     position: fixed;
+//     bottom: 10px;
+//     right: 10px;
+// }
+
+
+// .form-valid-msg {
+//     margin: -24px 0 0;
+//     line-height: 24px;
+//     font-size: 12px;
+//     color: red;
+// }
+
+// .msg {
+//     text-align: center;
+//     &.error {
+//         color: red;
+//     }
+//     &.success {
+//         color: green;
+//     }
+// }
+
+// .popup {
+//     position: fixed;
+//     z-index: 6;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     border: solid $white;
+//     border-width: 1px 0 0 1px;
+//     // background: $brand;
+//     background: $white;
+//     .inner {
+//         display: flex;
+//         flex-wrap: wrap;
+//         justify-content: center;
+//         align-items: center;
+//         overflow: auto;
+//         width: 100%;
+//         height: calc(100vh - 25vw);
+//     }
+// }
+// .link-close {
+//     position: absolute;
+//     top: 10px;
+//     left: 10px;
+// }
+
+
+
+// .user-nav {
+//     display: flex;
+//     flex-wrap: wrap;
+//     align-content: flex-start;
+//     width: 100%;
+//     height: calc(100vh - 25vw);
+//     margin: 0;
+//     padding: 0;
+//     line-height: 24px;
+//     font-size: 20px;
+//     list-style: none;
+//     background: $brand;
+//     // a {
+//     //     display: flex;
+//     //     justify-content: center;
+//     //     align-items: center;
+//     //     width: 100%;
+//     //     height: 100%;
+//     //     color: $sfgc;
+//     //     background: $sbgc;
+//     //     &:hover,
+//     //     &:focus {
+//     //         background: $mbch;
+//     //     }
+//     // }
+// }
+
+
+
+// .dateswitcher-box {
+//     display: inline-block;
+//     vertical-align: top;
+//     margin: 0 5px;
+//     button {
+//         vertical-align: top;
+//     }
+// }
+
+// .tile {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin: 0;
+//     border: solid $white;
+//     border-width: 0 1px 1px 0;
+//     padding: 0;
+//     width: 25%;
+//     height: 25vw;
+//     color: $white;
+//     background: $brand;
+//     &:focus {
+//         background: $brand;
+//     }
+//     svg {
+//         width: calc(100% / 3);
+//         height: calc(100% / 3);
+//         path {
+//             fill: $white;
+//         }
+//     }
+//     &.main-logo {
+//         width: 50%;
+//         svg {
+//             width: calc(100% / 1.5);
+//             height: calc(100% / 1.5);
+//         }
+//     }
+//     &.date-string {
+//         width: 100%;
+//         padding: 0 10px;
+//         height: auto;
+//         line-height: 30px;
+//         font-size: 16px;
+//     }
+//     &.btn-close {
+//         width: 100%;
+//     }
+//     .main-nav & {
+//         width: 50%;
+//         // height: 50vw;
+//         height: calc((100vh - 25vw) / 2);
+//     }
+//     .user-nav & {
+//         width: 100%;
+//         height: calc((100vh - 25vw) / 2);
+//     }
+// }
+
+// .main-title {
+//     padding: 10px;
+//     width: 100%;
+//     height: auto;
+//     line-height: 24px;
+//     font-size: 20px;
+//     text-align: center;
+// }
+
+// .events-list {
+//     padding: 10px;
+//     width: 100%;
+// }

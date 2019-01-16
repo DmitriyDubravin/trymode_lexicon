@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Settings from './settings';
+// import Settings from './settings';
 import Game from './game';
 import Categories from './categories';
 

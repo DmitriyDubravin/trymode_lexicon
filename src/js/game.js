@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Settings from './settings';
+// import Settings from './settings';
+import query from './../server';
 
 export default class Game extends Component {
 	constructor(props) {
@@ -19,28 +20,23 @@ export default class Game extends Component {
 		this.calcShowingItemIndex = this.calcShowingItemIndex.bind(this);
 	}
 
-	getData() {
+	async getData() {
 		let options = {
 			lexicon: 'get_data',
 			category: this.state.chosenCategory
 		};
-		fetch(Settings.server, {
-			method: 'POST',
-			headers: {'Content-Type': 'text/plain'},
-			body: JSON.stringify(options)
-		})
-		.then(response => response.json())
-		.then(data => {
-			let current = this.calcShowingItemIndex(data);
-			let id = data[current].id;
-			this.setState({
-				initialData: data,
-				filteredData: data,
-				definition: false,
-				current: current,
-				id: id
-			});
+
+		const data = await query({ data: options });
+		const current = this.calcShowingItemIndex(data);
+		const id = data[current].id;
+		this.setState({
+			initialData: data,
+			filteredData: data,
+			definition: false,
+			current: current,
+			id: id
 		});
+
 	}
 
 	componentDidMount() {
@@ -130,7 +126,7 @@ export default class Game extends Component {
 				);
 			}
 		} else {
-			return <div className="loading"><img src="images/preloader.gif" /></div>
+			return <div className="loading"><img src="images/preloader.gif" alt="" /></div>
 		}
 	}
 }

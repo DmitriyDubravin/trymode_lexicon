@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Settings from './settings';
+// import Settings from './settings';
+import query from './../server';
 
 export default class Edit extends Component {
 	constructor(props) {
@@ -17,24 +18,18 @@ export default class Edit extends Component {
 	componentDidMount() {
 		this.getItem();
 	}
-	getItem() {
+	async getItem() {
 		let options = {
 			lexicon: 'get_item',
 			id: this.props.id
 		};
-		fetch(Settings.server, {
-			method: 'POST',
-			headers: {'Content-Type': 'text/plain'},
-			body: JSON.stringify(options)
-		})
-		.then(response => response.json())
-		.then(data => {
-			this.setState({
-				category: data[0].category,
-				term: data[0].term,
-				definition: data[0].definition
-			});
+		const data = await query({ data: options });
+		this.setState({
+			category: data[0].category,
+			term: data[0].term,
+			definition: data[0].definition
 		});
+		
 	}
 	submitHandler(e) {
 		e.preventDefault();
@@ -53,7 +48,7 @@ export default class Edit extends Component {
 			this.props.changeView('game');
 		}
 	}
-	editTerm(category, term, definition, id) {
+	async editTerm(category, term, definition, id) {
 		let options = {
 			lexicon: 'edit_term',
 			id: id,
@@ -61,18 +56,12 @@ export default class Edit extends Component {
 			term: term,
 			definition: definition
 		};
-		fetch(Settings.server, {
-			method: 'POST',
-			headers: {'Content-Type': 'text/plain'},
-			body: JSON.stringify(options)
-		})
-		.then(response => response.text())
-		.then(data => {
-			console.log(data);
-		});
+
+		await query({ data: options });
+
 	}
 	render() {
-		let {id, changeView, allCategories} = this.props;
+		let {changeView, allCategories} = this.props;
 		let {category, term, definition, error} = this.state;
 
 		if(term) {
@@ -102,7 +91,7 @@ export default class Edit extends Component {
 				</div>
 			);
 		} else {
-			return <div className="loading"><img src="images/preloader.gif" /></div>
+			return <div className="loading"><img src="images/preloader.gif" alt="" /></div>
 		}
 	}
 }
