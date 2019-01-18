@@ -14,10 +14,10 @@ import App from './components/app';
 // no categories reload after new term added
 
 render(
-	<Provider store={store}>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
-	</Provider>,
-	document.querySelector('#root')
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  document.querySelector('#root')
 );

@@ -12,14 +12,14 @@ import './App.css';
 // import registerServiceWorker from './registerServiceWorker';
 
 const AppRouter = () => {
-    return (
-        <Provider store={store}>
-            <BrowserRouter>
-                {renderRoutes(routes)}
-            </BrowserRouter>
-        </Provider>
-    )
-}
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        {renderRoutes(routes)}
+      </BrowserRouter>
+    </Provider>
+  );
+};
 
 render(<AppRouter />, document.querySelector('#root'));
 // registerServiceWorker();
