@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
 import query from './../../server';
+import Select from './../select';
+import { handleFormEventValue } from './../../functions';
 
 const AddPage = ({
-  categoriesList,
+  categoriesList = [],
   changeView,
   getCategories
 }) => {
 
-  const [ error, setError ] = useState(null);
+  const [ error, setError ] = useState('');
+  const [ category, setCategory ] = useState('');
+  const [ newCategory, setNewCategory ] = useState('');
+  const [ term, setTerm ] = useState('');
+  const [ definition, setDefinition ] = useState('');
 
-  function addHandler(e, obj) {
+  function addHandler(e) {
     e.preventDefault();
-    if(obj.category.value === 'Select category' && obj.newCategory.value === '') {
+    if(category === 'Select category' && newCategory === '') {
       setError('Error: Choose category or add new one');
-    } else if(obj.term.value === '' || obj.definition.value === '') {
+    } else if(term === '' || definition === '') {
       setError('Error: Fill in "Term" and "Definition" fields');
     } else {
-      let category = obj.category.value;
-      if(obj.newCategory.value !== '') {
-        category = obj.newCategory.value;
-      }
-      let term = obj.term.value;
-      let definition = obj.definition.value;
-      addTerm(category, term, definition);
+      let cat = newCategory !== '' ? newCategory : category;
+      addTerm(cat, term, definition);
       getCategories();
     }
   }
@@ -40,22 +41,29 @@ const AddPage = ({
 
   }
 
+  const handleCategory = e => setCategory(handleFormEventValue(e));
+  const handleNewCategory = e => setNewCategory(handleFormEventValue(e));
+  const handleTerm = e => setTerm(handleFormEventValue(e));
+  const handleDefinition = e => setDefinition(handleFormEventValue(e));
+
   return (
     <div className="wrapper">
-      <form onSubmit={e => addHandler(e, this)}>
+      <form onSubmit={addHandler}>
         {error && <div className="msg alert">{error}</div>}
         <div>
-          <select ref={category => (this.category = category)}>
-            <option>Select category</option>
-            {categoriesList.map((item, i) => <option key={i}>{item}</option>)}
-          </select>
-          <input ref={newCategory => (this.newCategory = newCategory)} type="text" placeholder="or add new category" />
+          <Select
+            placeholder={'Select category'}
+            list={categoriesList}
+            chosen={category}
+            set={handleCategory}
+          />
+          <input onChange={handleNewCategory} value={newCategory} type="text" placeholder="or add new category" />
         </div>
         <div>
-          <input ref={term => (this.term = term)} type="text" placeholder="term" />
+          <input onChange={handleTerm} value={term} type="text" placeholder="term" />
         </div>
         <div>
-          <textarea ref={definition => (this.definition = definition)} placeholder="definition"></textarea>
+          <textarea onChange={handleDefinition} value={definition} placeholder="definition"></textarea>
         </div>
         <div className="centered">
           <input type="submit" value="Add" />
