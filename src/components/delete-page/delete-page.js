@@ -1,5 +1,5 @@
 import React from 'react';
-import query from './../../server';
+import { queryDeleteTerm } from './../../queries';
 
 const DeletePage = ({
   id,
@@ -9,14 +9,8 @@ const DeletePage = ({
 
   async function deleteTerm(e) {
     e.preventDefault();
-    let options = {
-      lexicon: 'delete_term',
-      id: id
-    };
-
-    await query({ data: options });
+    await queryDeleteTerm(id);
     getCategories();
-
   }
 
   return (

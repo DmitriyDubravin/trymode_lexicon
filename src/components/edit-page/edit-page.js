@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import query from './../../server';
+import { queryItem, queryEditTerm } from './../../queries';
 
 const EditPage = ({
   id,
@@ -18,11 +18,7 @@ const EditPage = ({
   }, []);
 
   async function getItem() {
-    let options = {
-      lexicon: 'get_item',
-      id: id
-    };
-    const data = await query({ data: options });
+    const data = await queryItem(id);
     setCategory(data[0].category);
     setTerm(data[0].term);
     setDefinition(data[0].definition);
@@ -40,16 +36,7 @@ const EditPage = ({
   }
 
   async function editTerm(category, term, definition, id) {
-    let options = {
-      lexicon: 'edit_term',
-      id: id,
-      category: category,
-      term: term,
-      definition: definition
-    };
-
-    await query({ data: options });
-
+    await queryEditTerm(id, category, term, definition);
   }
 
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import query from './../../server';
+import { queryData } from './../../queries';
 
 const Game = ({
   chosenCategory: defaultChosenCategory,
@@ -23,12 +23,7 @@ const Game = ({
 
   async function getData() {
 
-    let options = {
-      lexicon: 'get_data',
-      category: chosenCategory
-    };
-
-    const data = await query({ data: options });
+    const data = await queryData(chosenCategory);
     const current = calcShowingItemIndex(data);
     const id = data[current].id;
 

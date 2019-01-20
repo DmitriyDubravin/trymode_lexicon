@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import query from './../../server';
+import { queryGetCategories } from './../../queries';
+
 
 import HomePage from './../home-page';
 import AddPage from './../add-page';
 import EditPage from './../edit-page';
 import DeletePage from './../delete-page';
+
 
 const App = ({
   setCategoriesListAction,
@@ -28,11 +30,8 @@ const App = ({
     setId(newId);
   }
   async function getCategories() {
-    let options = {
-      lexicon: 'get_categories'
-    };
 
-    const response = await query({ data: options });
+    const response = await queryGetCategories();
     setView('game');
     setCategoriesListAction(response);
     setId(null);
@@ -42,15 +41,16 @@ const App = ({
     return null;
   }
 
-  if(view === 'game') {
+  switch (view) {
+  case 'game':
     return <HomePage changeView={changeView} />;
-  } else if(view === 'add') {
+  case 'add':
     return <AddPage changeView={changeView} getCategories={getCategories} />;
-  } else if(view === 'edit') {
+  case 'edit':
     return <EditPage id={id} changeView={changeView} />;
-  } else if(view === 'delete') {
+  case 'delete':
     return <DeletePage id={id} changeView={changeView} getCategories={getCategories} />;
-  } else {
+  default:
     return <div className="loading"><img src="images/preloader.gif" alt="" /></div>;
   }
 };

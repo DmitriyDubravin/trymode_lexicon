@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import query from './../../server';
+import { queryAddTerm } from './../../queries';
 import Select from './../select';
 import { handleFormEventValue } from './../../functions';
 
@@ -15,7 +15,7 @@ const AddPage = ({
   const [ term, setTerm ] = useState('');
   const [ definition, setDefinition ] = useState('');
 
-  function addHandler(e) {
+  async function addHandler(e) {
     e.preventDefault();
     if(category === 'Select category' && newCategory === '') {
       setError('Error: Choose category or add new one');
@@ -23,22 +23,9 @@ const AddPage = ({
       setError('Error: Fill in "Term" and "Definition" fields');
     } else {
       let cat = newCategory !== '' ? newCategory : category;
-      addTerm(cat, term, definition);
+      await queryAddTerm(cat, term, definition);
       getCategories();
     }
-  }
-
-  async function addTerm(category, term, definition) {
-
-    const options = {
-      lexicon: 'add_term',
-      category: category,
-      term: term,
-      definition: definition
-    };
-
-    await query({ data: options });
-
   }
 
   const handleCategory = e => setCategory(handleFormEventValue(e));
