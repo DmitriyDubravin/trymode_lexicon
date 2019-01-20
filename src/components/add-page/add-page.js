@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { queryAddTerm } from './../../queries';
-import Select from './../select';
-import { handleFormEventValue } from './../../functions';
+import { Select, Input, Textarea, Button } from './../forms';
 
 const AddPage = ({
   categoriesList = [],
@@ -28,11 +27,6 @@ const AddPage = ({
     }
   }
 
-  const handleCategory = e => setCategory(handleFormEventValue(e));
-  const handleNewCategory = e => setNewCategory(handleFormEventValue(e));
-  const handleTerm = e => setTerm(handleFormEventValue(e));
-  const handleDefinition = e => setDefinition(handleFormEventValue(e));
-
   return (
     <div className="wrapper">
       <form onSubmit={addHandler}>
@@ -42,18 +36,30 @@ const AddPage = ({
             placeholder={'Select category'}
             list={categoriesList}
             chosen={category}
-            set={handleCategory}
+            onChange={setCategory}
           />
-          <input onChange={handleNewCategory} value={newCategory} type="text" placeholder="or add new category" />
+          <Input
+            placeholder={'or add new category'}
+            value={newCategory}
+            onChange={setNewCategory}
+          />
         </div>
         <div>
-          <input onChange={handleTerm} value={term} type="text" placeholder="term" />
+          <Input
+            placeholder={'term'}
+            value={term}
+            onChange={setTerm}
+          />
         </div>
         <div>
-          <textarea onChange={handleDefinition} value={definition} placeholder="definition"></textarea>
+          <Textarea
+            placeholder={'definition'}
+            value={definition}
+            onChange={setDefinition}
+          />
         </div>
         <div className="centered">
-          <input type="submit" value="Add" />
+          <Button value={'Add'} />
         </div>
       </form>
       <div className="back"><button onClick={e => changeView('game', e)}><svg fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 11H6.83l3.58-3.59L9 6l-6 6 6 6 1.41-1.41L6.83 13H21z"/></svg></button></div>

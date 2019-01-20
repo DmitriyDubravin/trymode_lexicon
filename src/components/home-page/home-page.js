@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
 import Game from './../game';
-import Select from './../select';
+import { Select } from './../forms';
 
 const HomePage = ({
   categoriesList,
   changeView
 }) => {
 
-  const [ chosenCategory, setChosenCategory ] = useState(null);
-
-  function setCategory(e) {
-    const { value } = e.target;
-    let chosenCategory = value !== 'Select category' ? value : null;
-    setChosenCategory(chosenCategory);
-  }
+  const [ category, setCategory ] = useState('');
 
   return (
     <div className="wrapper">
@@ -21,12 +15,12 @@ const HomePage = ({
         <Select
           placeholder={'Select category'}
           list={categoriesList}
-          chosen={chosenCategory}
-          set={setCategory}
+          chosen={category}
+          onChange={setCategory}
         />
       </form>
-      {chosenCategory && <Game
-        chosenCategory={chosenCategory}
+      {category && <Game
+        chosenCategory={category}
         changeView={changeView}
       />}
       <div className="tools">

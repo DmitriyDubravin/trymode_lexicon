@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { queryItem, queryEditTerm } from './../../queries';
+import { Select, Input, Textarea, Button } from './../forms';
 
 const EditPage = ({
   id,
@@ -39,24 +40,6 @@ const EditPage = ({
     await queryEditTerm(id, category, term, definition);
   }
 
-
-  function handleCategory(e) {
-    const { value } = e.target;
-    setCategory(value);
-  }
-  function handleNewCategory(e) {
-    const { value } = e.target;
-    setNewCategory(value);
-  }
-  function handleTerm(e) {
-    const { value } = e.target;
-    setTerm(value);
-  }
-  function handleDefinition(e) {
-    const { value } = e.target;
-    setDefinition(value);
-  }
-
   if(term) {
     return (
       <div className="wrapper">
@@ -64,19 +47,32 @@ const EditPage = ({
         <form onSubmit={submitHandler}>
           {error && <div className="msg alert">{error}</div>}
           <div>
-            <select onChange={handleCategory} value={category}>
-              {categoriesList.map((item, i) => <option key={i}>{item}</option>)}
-            </select>
-            <input onChange={handleNewCategory} placeholder="or add new category" type="text" />
+            <Select
+              placeholder={'Select category'}
+              list={categoriesList}
+              chosen={category}
+              onChange={setCategory}
+            />
+            <Input
+              placeholder="or add new category"
+              value={newCategory}
+              onChange={setNewCategory}
+            />
           </div>
           <div>
-            <input onChange={handleTerm} value={term} type="text" />
+            <Input
+              value={term}
+              onChange={setTerm}
+            />
           </div>
           <div>
-            <textarea onChange={handleDefinition} value={definition}></textarea>
+            <Textarea
+              value={definition}
+              onChange={setDefinition}
+            />
           </div>
           <div className="centered">
-            <input type="submit" value="Edit" />
+            <Button value={'Edit'} />
           </div>
         </form>
       </div>
