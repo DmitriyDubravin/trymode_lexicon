@@ -71,7 +71,7 @@ export const queryEditTerm = (id, category, term, definition) => {
 };
 
 export const queryDeleteTerm = id => {
-  return query({
+  query({
     data: {
       lexicon: 'delete_term',
       id
