@@ -3,13 +3,15 @@ import React from 'react';
 const Button = ({
   value = 'Button',
   type = 'submit',
-  onChange
+  className,
+  onClick
 }) => {
   return (
     <input
       value={value}
       type={type}
-      onChange={onChange}
+      className={className}
+      onClick={onClick}
     />
   );
 };

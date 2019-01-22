@@ -7,7 +7,7 @@ const HomePage = ({
   changeView
 }) => {
 
-  const [ category, setCategory ] = useState('');
+  const [ chosenCategory, setChosenCategory ] = useState('');
 
   return (
     <div className="wrapper">
@@ -19,16 +19,14 @@ const HomePage = ({
           </svg>
         </button>
       </div>
-      <form>
-        <Select
-          placeholder={'Select category'}
-          list={categoriesList}
-          chosen={category}
-          onChange={setCategory}
-        />
-      </form>
-      {category && <Game
-        chosenCategory={category}
+      <Select
+        placeholder={'Select category'}
+        list={categoriesList}
+        chosen={chosenCategory}
+        onChange={setChosenCategory}
+      />
+      {chosenCategory && <Game
+        chosenCategory={chosenCategory}
         changeView={changeView}
       />}
     </div>
