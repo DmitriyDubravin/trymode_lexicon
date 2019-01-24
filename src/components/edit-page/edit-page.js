@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { queryItem, queryEditTerm } from './../../queries';
 import { Select, Input, Textarea, Button } from './../forms';
-import ButtonBack from './../button-back';
+import { BtnIconBack } from './../icons';
 
 const EditPage = ({
   changeView,
@@ -46,7 +46,7 @@ const EditPage = ({
 
   return (
     <div className="wrapper">
-      <ButtonBack onClick={() => changeView('game')} />
+      <BtnIconBack onClick={() => changeView('game')} className='back' />
       <form onSubmit={submitHandler}>
         {error && <div className="msg alert">{error}</div>}
         <div>

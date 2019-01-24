@@ -1,7 +1,7 @@
 import React from 'react';
 import { queryDeleteTerm } from './../../queries';
 import { Button } from './../forms';
-import ButtonBack from './../button-back';
+import { BtnIconBack } from './../icons';
 
 const DeletePage = ({
   id,
@@ -16,10 +16,10 @@ const DeletePage = ({
 
   return (
     <div className="wrapper">
-      <ButtonBack onClick={() => changeView('game')} />
+      <BtnIconBack onClick={() => changeView('game')} className='back' />
       <p className="note">Delete? Are you sure?</p>
       <div className="buttons">
-        <Button onClick={() => deleteTerm()} className="alert">Yes</Button>
+        <Button onClick={() => deleteTerm()} className="alert" value="Yes" />
       </div>
     </div>
   );

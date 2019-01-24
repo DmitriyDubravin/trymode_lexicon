@@ -5,7 +5,8 @@ body {
   margin: 0;
   font: 16px/24px Arial, Helvetica, sans-serif;
   color: #222;
-  background: #fafafa; }
+  background: #fafafa;
+  background: #efefef; }
 
 select {
   display: block;
@@ -52,7 +53,7 @@ button {
   font-size: 16px;
   text-align: center;
   color: white;
-  background: blue;
+  background: #4d4dff;
   outline: none;
   cursor: pointer; }
   input[type="submit"]:hover,
@@ -60,10 +61,10 @@ button {
     background: rgba(0, 0, 255, 0.9); }
   input[type="submit"].alert,
   button.alert {
-    background: red; }
+    background: #ff4d4d; }
   input[type="submit"].success,
   button.success {
-    background: green; }
+    background: #00cd00; }
   input[type="submit"] svg,
   button svg {
     display: block;
@@ -102,10 +103,9 @@ p {
 .back {
   position: absolute;
   top: 20px;
-  left: 20px; }
-  .back button {
-    padding: 0;
-    min-width: 36px; }
+  left: 20px;
+  padding: 0;
+  min-width: 36px; }
 
 .tools2 {
   position: absolute;
@@ -127,13 +127,9 @@ p {
   left: 20px;
   right: 20px;
   overflow: hidden;
-  text-align: center; }
-  .buttons button {
-    float: left; }
-    .buttons button + button {
-      float: right; }
-  .buttons button:only-child {
-    float: none; }
+  text-align: center;
+  display: flex;
+  justify-content: space-around; }
 
 .loading {
   position: fixed;

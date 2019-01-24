@@ -6,6 +6,7 @@ body {
 	font: 16px/24px Arial, Helvetica, sans-serif;
 	color: #222;
 	background: #fafafa;
+	background: #efefef;
 }
 
 
@@ -62,17 +63,17 @@ button {
 	font-size: 16px;
 	text-align: center;
 	color: white;
-	background: blue;
+	background: lighten(blue, 15%);
 	outline: none;
 	cursor: pointer;
 	&:hover {
 		background: rgba(blue, 0.9);
 	}
 	&.alert {
-		background: red;
+		background: lighten(red, 15%);
 	}
 	&.success {
-		background: green;
+		background: lighten(green, 15%);
 	}
 	svg {
 		display: block;
@@ -122,10 +123,8 @@ p {
 	position: absolute;
 	top: 20px;
 	left: 20px;
-	button {
-		padding: 0;
-		min-width: 36px;
-	}
+	padding: 0;
+	min-width: 36px;
 }
 
 .tools2 {
@@ -152,15 +151,8 @@ p {
 	right: 20px;
 	overflow: hidden;
 	text-align: center;
-	button {
-		float: left;
-		& + button {
-			float: right;
-		}
-	}
-	button:only-child {
-		float: none;
-	}
+	display: flex;
+	justify-content: space-around;
 }
 
 .loading {

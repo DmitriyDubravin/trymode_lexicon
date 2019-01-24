@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { queryAddTerm } from './../../queries';
 import { Select, Input, Textarea, Button } from './../forms';
-import ButtonBack from './../button-back';
+import { BtnIconBack } from './../icons';
 
 const AddPage = ({
   changeView,
@@ -30,7 +30,7 @@ const AddPage = ({
 
   return (
     <div className="wrapper">
-      <ButtonBack onClick={() => changeView('game')} />
+      <BtnIconBack onClick={() => changeView('game')} className='back' />
       <form onSubmit={submitHandler}>
         {error && <div className="msg alert">{error}</div>}
         <div>

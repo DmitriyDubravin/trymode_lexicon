@@ -21,10 +21,7 @@ const App = ({
     getCategories();
   }, []);
 
-  function changeView(view, e, id) {
-    if(e !== undefined) { 
-      e.preventDefault(); 
-    }
+  function changeView(view, id) {
     let newId = id !== undefined ? id : null;
     setView(view);
     setId(newId);
@@ -47,7 +44,7 @@ const App = ({
   case 'add':
     return <AddPage changeView={changeView} getCategories={getCategories} />;
   case 'edit':
-    return <EditPage id={id} changeView={changeView} />;
+    return <EditPage id={id} changeView={changeView} getCategories={getCategories} />;
   case 'delete':
     return <DeletePage id={id} changeView={changeView} getCategories={getCategories} />;
   default:
