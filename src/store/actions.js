@@ -1,4 +1,4 @@
 
 export default {
-    setCategoriesList: 'set-categories-list'
+  setCategoriesList: 'set-categories-list'
 };

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
 import { queryGetCategories } from './../../queries';
-
 
 import HomePage from './../home-page';
 import AddPage from './../add-page';
 import EditPage from './../edit-page';
 import DeletePage from './../delete-page';
+import Preloader from './../preloader';
+
 
 
 const App = ({
@@ -29,9 +29,11 @@ const App = ({
   async function getCategories() {
 
     const response = await queryGetCategories();
-    setView('game');
-    setCategoriesListAction(response);
-    setId(null);
+    if (response) {
+      setView('game');
+      setCategoriesListAction(response);
+      setId(null);
+    }
 
   }
   if (!categoriesList) {
@@ -48,7 +50,7 @@ const App = ({
   case 'delete':
     return <DeletePage id={id} changeView={changeView} getCategories={getCategories} />;
   default:
-    return <div className="loading"><img src="images/preloader.gif" alt="" /></div>;
+    return <Preloader />;
   }
 };
 

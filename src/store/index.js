@@ -1,12 +1,12 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 import {
-    categoriesList
+  categoriesList
 } from './reducers';
 
 
 const reducers = combineReducers({
-    categoriesList
+  categoriesList
 });
 
 
