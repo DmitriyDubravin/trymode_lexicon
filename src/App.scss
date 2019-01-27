@@ -9,8 +9,6 @@ body {
 	background: #efefef;
 }
 
-
-
 select {
 	display: block;
 	margin: 0 -10px 20px;
@@ -42,11 +40,6 @@ textarea {
 	color: #222;
 	background: none;
 	outline: none;
-	// &::-moz-placeholder {color: #222; opacity: 1;}
-	// &:-ms-input-placeholder {color: #222;}
-	// &::-webkit-input-placeholder {color: #222;}
-	// &:-moz-placeholder {color: #222;}
-	// &.placeholder {color: #222;}
 }
 textarea {
 	min-height: 100px;
@@ -80,10 +73,6 @@ button {
 		margin: 0 auto;
 		height: 36px;
 	}
-}
-
-input[type="submit"] {
-	// width: 100%;
 }
 
 p {
